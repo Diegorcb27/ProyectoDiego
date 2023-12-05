@@ -1,0 +1,367 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+--primary-color: #E84E2B;
+--secundary-color: #FF9209;
+}
+
+body{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+body.dark{
+    background-color: black;
+    color:white;
+}
+img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: inline-block;
+}
+button{
+    border: none;
+    color: inherit;
+    display: inline-block;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color:inherit;
+    display: inline-block;
+    font-size: 20px;
+    width: 20px;
+}
+
+.header iframe{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top:0;
+}
+.header_nav{
+    background-color: var(--secundary-color);
+    max-width: 1200px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+    position:fixed;
+    top:0;
+    z-index: 20;
+}
+
+
+.dark .header_nav{
+    background-color: var(--primary-color);  /*preguntar por que hay dos clases de diferentes etiquetas*/
+}
+
+.nav_star,
+.nav_center,
+.nav_end{
+    display: flex;
+    gap:10px;
+    align-items: center;
+}
+.main{
+    position: relative;  /*como z-index no funciona con posicion static, debo cambiarle el posicionamiento a main a position relative*/
+    z-index: 10;
+
+}
+.section{
+    height: 100vh;
+    padding: 60px 10px 10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.front > *{
+    text-align: center;
+}
+
+
+.about iframe{
+    height: 50%;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.hard_skills{
+    position:relative;
+    height: 65%;
+    width: 100%;
+}
+
+.slider_skills{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.hard_skills button{
+    background-color: var(--secundary-color);
+    position:absolute;
+    top:50%;
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+.dark .hard_skills button{
+    background-color: var(--primary-color);
+}
+
+.btn_prev{
+    left:1%;
+}
+.btn_next{
+    right:1%;
+}
+
+.education{
+    justify-content: space-evenly;
+}
+
+.achievements figure{
+    height: 50%;
+}
+@media (min-width:400px){
+    a{
+        font-size: 25px;
+        width: 25px;
+    }
+}
+@media (min-width:850px){
+    a{
+        font-size: 30px;
+        width: 30px;
+        position: relative;
+    }
+    a:hover{
+        transform: scale(1.25);
+    }
+    a:hover::after{
+        background-color: var(--secundary-color);
+        content: "texto de prueba";
+        position: absolute;
+        top:0;
+        left: 40px;
+        width: max-content;
+        font-size: 16px;
+        border: 1px solid;
+        padding: 5px, 10px;
+        border-radius: 5px;
+    }
+    .dark a:hover::after{
+        background-color: var(--primary-color);
+    }
+    .header_nav{
+        height: 100vh;
+        width: 50px;
+        flex-direction: column;
+       
+    }
+    .nav_star,
+.nav_center,
+.nav_end{
+    display: flex;
+  flex-direction: column;
+}
+body.dark{
+    background-color: black;
+    color:white;
+}
+
+/*Estilos para los tooltips*/
+
+.icon_home:hover::after{
+    content: "Go home";
+}
+.icon_about:hover::after{
+    content: "about me";
+}
+.icon_skills:hover::after{
+    content: "skills";
+}
+.icon_projects:hover::after{
+    content: "Projects";
+}
+.icon_education:hover::after{
+    content: "Education";
+}
+.icon_achievements:hover::after{
+    content: "Achievements";
+}
+.icon_cv:hover::after{
+    content: "Download my cv";
+}
+.icon_lenguage:hover::after{
+    content: "choose language";
+}
+.icon_volume:hover::after{
+    content: "Turn on/off sound";
+}
+.icon_mode:hover::after{
+    content: "Activate/desactivate dark mode";
+}
+
+/*Fin de los estilos para los tooltips*/
+
+.section{
+    padding: 50px 50px 50px 100px;
+    display: grid;
+}
+
+.front{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+}
+
+.front h1{
+    grid-column: span 2;
+}
+
+.front h2{
+    grid-column: 1;
+    grid-row: 2;
+    text-align: left;
+}
+
+.front p{
+    grid-column: 1;
+    grid-row: 3;
+    text-align: left;
+    align-self: self-start;
+    
+}
+
+.front figure{
+    grid-column: 2;
+    grid-row: 2 /span 2;
+}
+
+.about{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr 4fr);  /*preguntar*/
+    align-items: center;
+}
+
+.about h2{
+    grid-column: span 2;  /*preguntar*/
+}
+
+.about p{
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.about h3{
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.about ul{
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.about iframe{
+    grid-column: 2;
+    grid-row: 2 / span 3;
+    width: 100%;
+    height: 100%;
+}
+
+.skills{
+    grid-template-columns: repeat(1, 2fr 3fr );
+    grid-template-rows: repeat(1, 1fr 5fr);  /*son 2 filas la primera de 1fr la segunda de 4fr la tercera de 1fr y la cuarta de 4fr es decir se multiplica por 2*/
+    align-items: center;
+}
+
+.skills h2{
+    grid-column: span 2; 
+}
+
+.skills article{
+    width: 100%;
+}
+
+.soft_skills{
+    grid-column: 1;
+    grid-row: 2 / span 4;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+}
+
+.soft_skills li{
+   margin: 10px 0;
+   
+
+}
+
+.hard_skills{
+    grid-column: 2;
+    grid-row: 2 /span 4;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.education{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr 5fr);  
+    align-items: center;
+}
+
+.education h2{
+    grid-column: span 2;
+    align-self: self-end;
+}
+
+.education article{
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+}
+
+.education li{
+    margin: 10px 0;
+}
+
+.achievements{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr 5fr);  
+    align-items: center;
+}
+
+.achievements h2{
+    grid-column: span 2;
+    align-self: self-end;
+}
+
+.achievements figure{
+    justify-self: center;
+}
+
+
+}
+
+
