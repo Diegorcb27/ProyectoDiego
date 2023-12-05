@@ -107,24 +107,24 @@ async function getApi(){
     }
 }
 
-function printProjects(projects) {
-    const list = document.querySelectorAll(".splide_slide")
-    projects.forEach((project, i) => {
-        console.log(project);
-        const {descripcion, image, tecnologias, titulo, description, technologies, title }=project;
-        const html = `
-            <div>
-                <h3>${titulo}</h3>
-                <p>${descripcion}</p>
-                <p>${tecnologias}</p>
-            </div>
-            <figure>
-                <img src="${image}" alt="slider item">
-            </figure>
-        `;
-        list[i].innerHTML = html;
-    });
-}
+// function printProjects(projects) {
+//     const list = document.querySelectorAll(".splide__slide")
+//     projects.forEach((project, i) => {
+//         console.log(project);
+//         const {descripcion, image, tecnologias, titulo, description, technologies, title }=project;
+//         const html = `
+//             <div>
+//                 <h3>${titulo}</h3>
+//                 <p>${descripcion}</p>
+//                 <p>${tecnologias}</p>
+//             </div>
+//             <figure>
+//                 <img src="${image}" alt="slider item">
+//             </figure>
+//         `;
+//         list[i].innerHTML = html;
+//     });
+// }
 
 function slider(){
     const splide = new Splide( '.splide', {
@@ -136,8 +136,8 @@ function slider(){
 
 async function main(){
     const projects = await getApi();
-   console.log(projects);
-   printProjects(projects);
+//    console.log(projects);
+//    printProjects(projects);
     skills();
     mode();
     sound();
