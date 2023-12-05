@@ -152,13 +152,25 @@ u{
     position:relative;
     height: 65%;
     width: 100%;
-}
-
-.slider_skills{
-    height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap:50px;
+   
+
+}
+.hard_skills h3{
+align-self: self-start;
+   
+    
+}
+
+.slider_skills {
+    /* height: 90%; */
+    display: flex;
+    flex-direction: column;
+   align-content: center;
+    
 
 }
 

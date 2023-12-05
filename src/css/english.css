@@ -147,10 +147,21 @@ u{
     position:relative;
     height: 65%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:50px;
+   
+
+}
+.hard_skills h3{
+align-self: self-start;
+   
+    
 }
 
 .slider_skills{
-    height: 90%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -309,7 +320,7 @@ transition: bottom .5s;
     .header_nav{
         height: 100vh;
         width: 50px;
-        max-height: 700px;
+        max-height: 1000px;
         flex-direction: column;
        
     }
