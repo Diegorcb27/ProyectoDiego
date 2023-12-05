@@ -1,5 +1,44 @@
 // console.log("se cargo la pagina");
 
+function changeText(label){
+    const phrase=label.textContent;
+    let text ='';
+    for (const item of phrase) {
+        if (item!==' ') {
+            text += `
+            <b>${item}</b>
+            `;
+            
+        } else {
+            text += `
+            <u>${item}</u>
+            `;
+        }
+    label.innerHTML=text;
+        
+    }
+};
+
+function animateText(label) {
+    const text=document.querySelectorAll("b");
+    let i=0;
+    const print=setInterval(() => {
+        text[i].classList.toggle("zoom");
+        i++;
+        if(i>=text.length){
+            clearInterval(print);
+            i=0;
+            const clear=setInterval(() => {
+                text[i].classList.toggle("zoom");
+                i++;
+                if(i>=text.length){
+                    clearInterval(clear);
+                }
+            }, 200);
+        }
+    }, 200);
+}
+
 function skills(){
     const skill=document.querySelector(".slider_skills"); //lee la clase que contiene las imagenes en figure
     const list=document.querySelectorAll(".slider_skills img"); //se le agrega queryselectorALL porque son varias imagenes las que queremos traer
@@ -95,11 +134,27 @@ function sound(){
     })
 }
 
+function social() {
+    const nav=document.querySelector(".header_nav")
+    const footer = document.querySelector(".footer")
+    footer.classList.toggle("active")
+    setTimeout(() => {
+        footer.classList.toggle("active")
+    }, 2000);
+    nav.addEventListener('click', ()=>{
+        footer.classList.toggle("active")
+            setTimeout(() => {
+                footer.classList.toggle("active")
+            }, 2000);
+    } )
+}
+
 async function getApi(){
     const url= "https://fundametos-api-porfolios-dev-exsn.2.ie-1.fl0.io/api/v1/projects";
     try {
         const data = await fetch(url);
         const res = await data.json();
+        localStorage.setItem("projects", JSON.stringify(res)); //para guardar en el localStorage
     //    console.log(res);
     return res;
     } catch (error) {
@@ -107,41 +162,73 @@ async function getApi(){
     }
 }
 
-// function printProjects(projects) {
-//     const list = document.querySelectorAll(".splide__slide")
-//     projects.forEach((project, i) => {
-//         console.log(project);
-//         const {descripcion, image, tecnologias, titulo, description, technologies, title }=project;
-//         const html = `
-//             <div>
-//                 <h3>${titulo}</h3>
-//                 <p>${descripcion}</p>
-//                 <p>${tecnologias}</p>
-//             </div>
-//             <figure>
-//                 <img src="${image}" alt="slider item">
-//             </figure>
-//         `;
-//         list[i].innerHTML = html;
-//     });
-// }
+function printProjects(projects) {
+    const list = document.querySelectorAll(".splide__slide");
+    const path=location.href.split("/").at(-1).at(0);
+    projects.forEach((project, i) => {
+        const {descripcion, image, tecnologias, titulo, description, technologies, title }=project;
+        let html ="";
+        // console.log(location.href.split("/").at(-1).at(0)); //por que location?
+        if(path==="e"){
+            html = `
+                <div>
+                    <h3>${title}</h3>
+                    <p>${description}</p>
+                    <p>${technologies}</p>
+                </div>
+                <figure>
+                    <img src="${image}" alt="slider item">
+                </figure>
+        `;
+        } else {
+            html = `
+                <div>
+                    <h3>${titulo}</h3>
+                    <p>${descripcion}</p>
+                    <p>${tecnologias}</p>
+                </div>
+                <figure>
+                    <img src="${image}" alt="slider item">
+                </figure>
+        `;
+        }
+       
+        list[i].innerHTML = html;
+    });
+}
 
 function slider(){
     const splide = new Splide( '.splide', {
         type   : 'loop',
+        autoplay:true,
+        interval: 3000,
+        speed: 1000,
+        breakpoints: {
+            849: {
+                direction: 'ttb',
+                height: "65vh",
+            },
+      }
       } );
     splide.mount();
 }
 
 
 async function main(){
-    const projects = await getApi();
-//    console.log(projects);
-//    printProjects(projects);
+    // const data=JSON.parse(localStorage.getItem("projects")); //para extraer del LocalStorage
+    // console.log(data);
+    const projects =JSON.parse(localStorage.getItem("projects")) || await getApi();
+    const h1 = document.querySelector("h1");
+    changeText(h1);
+    animateText(h1);
+   console.log(projects);
+   printProjects(projects);
     skills();
     mode();
     sound();
+    social();
     slider();
+   
   
 
 }
