@@ -63,17 +63,17 @@ function mode(){
         } else {
             icon.name="sunny-sharp";
         }
-        // if(link.getAttribute("href")==="./src/particles/dark.css"){
-        //     link.href= "./src/particles/brigth.css"; 
-        // } else {
-        //     link.href= "./src/particles/dark.css";
-        // }
-        //con setAttribute
         if(link.getAttribute("href")==="./src/particles/dark.css"){
-           link.setAttribute("href", "./src/particles/brigth.css" )
+            link.href= "./src/particles/brigth.css"; 
         } else {
             link.href= "./src/particles/dark.css";
         }
+        //con setAttribute
+        // if(link.getAttribute("href")==="./src/particles/dark.css"){
+        //    link.setAttribute("href", "./src/particles/brigth.css" )
+        // } else {
+        //     link.href= "./src/particles/dark.css";
+        // }
     });
 }
 
