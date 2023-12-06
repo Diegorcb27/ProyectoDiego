@@ -203,6 +203,8 @@ align-self: self-start;
     flex-direction: column-reverse;
     gap: 10px;
     align-items: center;
+    width: fit-content;
+    height: fit-content;
 }
 
 .splide__slide div{
@@ -221,6 +223,8 @@ align-self: self-start;
 .splide__slide figure{
     border-radius: 20px;
     overflow: hidden;
+    width: fit-content;
+    height: fit-content;
     
    }
 
