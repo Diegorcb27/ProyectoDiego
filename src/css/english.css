@@ -370,7 +370,7 @@ body.dark{
     content: "Able/Disable dark mode";
 }
 .icon_link:hover::after{
-    content: "catact me";
+    content: "contact me";
     bottom: 45px;
     right: 0;
 }
