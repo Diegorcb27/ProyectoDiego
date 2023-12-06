@@ -215,6 +215,8 @@ align-self: self-start;
 .splide__slide figure{
     border-radius: 20px;
     overflow: hidden;
+    width: fit-content;
+    height: fit-content;
     
    }
 
